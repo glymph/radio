@@ -43,7 +43,8 @@ stations = ( ('0', 'Radio 1', radio1url),
              ('2', 'Magic Soul', 'http://icy-e-bz-04-cr.sharp-stream.com:8000/magicsoul.mp3'),
              ('3', 'Jazz FM', 'http://adsi-e-02-boh.sharp-stream.com:8000/jazzfmmobile.mp3'),
              ('4', 'Absolute 80s', 'http://icy-e-bab-04-cr.sharp-stream.com:8000/absolute80s.mp3'),
-             ('5', 'Jungletrain', 'http://stream2.jungletrain.net:8000/') )
+             ('5', 'Jungletrain', 'http://stream2.jungletrain.net:8000/'),
+             ('6', 'Barricade radio', 'http://uk2.internet-radio.com:8066/') )
 
 currentstation = 0
 cmd = "mpc clear && mpc add '" + stations [currentstation] [2] + "' && mpc play"
@@ -68,14 +69,14 @@ while True:
                 run_cmd("amixer sset PCM 10%-")
             if button[1]=='Left':
                 currentstation -= 1
-                currentstation %= 6
+                currentstation %= 7
                 cmd = "mpc clear && mpc add '" + stations [currentstation] [2] + "' "
                 run_cmd(cmd)
                 if state == "playing":
                     run_cmd("mpc play")
             if button[1]=='Right':
                 currentstation += 1
-                currentstation %= 6
+                currentstation %= 7
                 cmd = "mpc clear && mpc add '" + stations [currentstation] [2] + "' "
                 run_cmd(cmd)
                 if state == "playing":
